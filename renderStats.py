@@ -10,6 +10,9 @@ def getFromWeek(week, year):
     t[1] = str(int(datetime.datetime.timestamp(r)) - 1)
     return t
 
+def average(lst): 
+    return int(sum(lst) / len(lst))
+
 DATATREE = {}
 HTMLOBJ = '''<div class="card xl-2">
                 <div class="card-header">
@@ -25,6 +28,7 @@ HTMLOBJ = '''<div class="card xl-2">
                         <li>📨 <b>[EMAIL_IN]</b> emails received and <b>[EMAIL_OUT]</b> sent.</li>
                         <li>👨‍💻 <b>[COMMITS]</b> <a href="https://github.com/bobvanluijt?tab=overview&from=[YEAR]-12-01&to=[YEAR]-12-08" target="_blank">commits</a> on Github.</li>
                         <li>🐦 <a href="[TWEETLINK]" target="_blank">Tweets this week</a>.</li>
+                        <li>📅 I've had [MEETINGS] meetings with [PEOPLE] people.</li>
                         <li>🌍 Cities I've visited [VISITS]</li>
                         <li>🎵 Albums I've listened to [TRACKS]</li>
                     </ul>
@@ -43,10 +47,12 @@ for filename in os.listdir(directory):
                 for keyWeek, valueWeek in value.items():
                     DATATREE[key][keyWeek] = valueWeek
 
-ALLWEEKS = ''
-ALLEMAILSIN = ''
-ALLEMAILSOUT = ''
-ALLCOMMITS = ''
+ALLWEEKS = []
+ALLEMAILSIN = []
+ALLEMAILSOUT = []
+ALLCOMMITS = []
+ALLMEETINGS = []
+ALLPEOPLE = []
 
 year = 2100
 counter = 0
@@ -65,17 +71,20 @@ while year > 2015:
                 else:
                     HTMLOBJIND = HTMLOBJ
 
-                ALLWEEKS = "'week " + str(week) + ' ' + str(year) + "', " + ALLWEEKS
-
                 HTMLOBJIND = HTMLOBJIND.replace('[WEEK]', str(week))
                 HTMLOBJIND = HTMLOBJIND.replace('[YEAR]', str(year))
                 HTMLOBJIND = HTMLOBJIND.replace('[EMAIL_IN]', str(current['email']['toMe']))
                 HTMLOBJIND = HTMLOBJIND.replace('[EMAIL_OUT]', str(current['email']['fromMe']))
                 HTMLOBJIND = HTMLOBJIND.replace('[COMMITS]', str(current['commits']))
+                HTMLOBJIND = HTMLOBJIND.replace('[MEETINGS]', str(current['meetings']['meetings']))
+                HTMLOBJIND = HTMLOBJIND.replace('[PEOPLE]', str(current['meetings']['people']))
 
-                ALLEMAILSIN = str(current['email']['toMe']) + ', ' + ALLEMAILSIN
-                ALLEMAILSOUT = str(current['email']['fromMe']) + ', ' + ALLEMAILSOUT
-                ALLCOMMITS = str(current['commits']) + ', ' + ALLCOMMITS
+                ALLWEEKS.append("'week " + str(week) + ' ' + str(year))
+                ALLEMAILSIN.append(int(current['email']['toMe']))
+                ALLEMAILSOUT.append(int(current['email']['fromMe']))
+                ALLCOMMITS.append(int(current['commits']))
+                ALLMEETINGS.append(int(current['meetings']['meetings']))
+                ALLPEOPLE.append(int(current['meetings']['people']))
 
                 pins = ''
                 if 'location' in current:
@@ -126,10 +135,12 @@ while year > 2015:
 ##
 html_file = open('./html/index.template.html', 'r')
 html_file = html_file.read().replace('[VISITCONTENT]', HTMLFINALOBJ)
-html_file = html_file.replace('[ALLWEEKS]', ALLWEEKS[:-2]) 
-html_file = html_file.replace('[ALLEMAILSIN]', ALLEMAILSIN[:-2]) 
-html_file = html_file.replace('[ALLEMAILSOUT]', ALLEMAILSOUT[:-2]) 
-html_file = html_file.replace('[ALLCOMMITS]', ALLCOMMITS[:-2]) 
+html_file = html_file.replace('[ALLWEEKS]', '"📨 in", "📨 out", "📅", "👩👨in 📅", "Github 👨‍💻"') 
+html_file = html_file.replace('[ALLEMAILSIN]', str(average(ALLEMAILSIN)))
+html_file = html_file.replace('[ALLEMAILSOUT]', str(average(ALLEMAILSOUT)))
+html_file = html_file.replace('[ALLMEETINGS]', str(average(ALLMEETINGS)))
+html_file = html_file.replace('[ALLPEOPLE]', str(average(ALLPEOPLE)))
+html_file = html_file.replace('[ALLCOMMITS]', str(average(ALLCOMMITS)))
 
 file = open('index.html', 'w')
 file.write(html_file)

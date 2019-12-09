@@ -33,17 +33,20 @@ body {
 <main role="main" class="flex-shrink-0">
     <div class="container">
         <h1 class="mt-5">Bob van Luijt</h1>
-        <p class="lead">Hi there 👋 Thanks for visiting my website.</p>
+        <p class="lead">Hi there 👋 thanks for visiting my corner on the web.</p>
         <div>
             <ul class="list mb-2">
                 <li>You can read my biography on <a href="https://en.wikipedia.org/wiki/Bob_van_Luijt" target="_blank">Wikipedia</a> and professional stuff on <a href="https://linkedin.com/in/bobvanluijt" target="_blank">LinkedIN</a>.</li>
-                <li>You can read all my writings on my <a href="https://blog.bob.wtf" target="_blank">blog</a>.</li>
+                <li>You can read all my writings on my <a href="https://medium.com/@bobvanluijt" target="_blank">blog</a>.</li>
                 <li>You can read about my ideas related to digital technology on <a href="https://hackernoon.com/@bobvanluijt" target="_blank">Hackernoon</a>.</li>
                 <li>You can sign-up for my <a href="https://weavious.us12.list-manage.com/subscribe?u=53a27387f37f1d666940b7728&id=6703cc5a55" target="_blank">occasional newsletter</a>.</li>
-                <li>I'm one of the co-founders of <a href="https://semi.technology" target="_blank">SeMI Technologies</a> with whom we create the open-source knowledge graph <a href="https://github.com/semi-technologies/weaviate" target="_blank">Weaviate</a>.</li>
+                <li>I'm one of the co-founders of <a href="https://semi.technology" target="_blank">SeMI Technologies</a> with whom we maintain the open-source project and product <a href="https://github.com/semi-technologies/weaviate" target="_blank">Weaviate</a>.</li>
                 <ul class="list mb-2">
                     <li>
                         <a href="https://www.youtube.com/watch?v=hlG0vto2CdM" target="_blank">Weaviate presentation and demo</a> on Youtube.
+                    </li>
+                    <li>
+                        Me on Weaviate during the <a href="https://www.youtube.com/watch?v=6hrRqF98XqU" target="_blank">Bits and Bytes podcast</a>.
                     </li>
                 </ul>
                 <li>I like to make music &amp; tech art:
@@ -67,10 +70,27 @@ body {
                         <li>Digital technology as core competency.</li>
                     </ul>
                     <ul class="list mb-2">
-                        <li>The value of digital information</li>
+                        <li>The value of digital information &amp; data.</li>
                     </ul>
                     <ul class="list mb-2">
                         <li>The role of language in software and data.</li>
+                    </ul>
+                </li>
+                <li>My hobbies include:
+                    <ul class="list mb-2">
+                        <li>
+                            The philosophy of language.
+                        </li>
+                    </ul>
+                    <ul class="list mb-2">
+                        <li>
+                            <a href="https://twitter.com/bobvanluijt/status/1204152792207810560" target="_blank">Flying a Piper Warrior II</a>.
+                        </li>
+                    </ul>
+                    <ul class="list mb-2">
+                        <li>
+                            Going on <a href="https://twitter.com/bobvanluijt/status/1204153593101791233?s=20" target="_blank">retreats</a>.
+                        </li>
                     </ul>
                 </li>
                 <li>Connect with me on social media:
@@ -124,17 +144,9 @@ var myChart = new Chart(ctx, {
     data: {
         labels: [ [ALLWEEKS] ],
         datasets: [{
-            label: '# of emails in',
-            data: [ [ALLEMAILSIN] ],
-            backgroundColor: 'rgba(54, 162, 235, 1)'
-        }, {
-            label: '# of email out',
-            data: [ [ALLEMAILSOUT] ],
-            backgroundColor: 'rgba(255, 206, 86, 1)'
-        }, {
-            label: '# of Github commits',
-            data: [ [ALLCOMMITS] ],
-            backgroundColor: 'rgba(75, 192, 192, 1)'
+            label: 'weekly averages',
+            data: [ [ALLEMAILSIN], [ALLEMAILSOUT], [ALLMEETINGS], [ALLPEOPLE], [ALLCOMMITS] ],
+            backgroundColor: '#e85113'
         }]
     },
     options: {

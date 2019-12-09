@@ -1,1 +1,1 @@
-{"2019": {"42": {"commits": 13, "location": {"Amsterdam, Netherlands": [[{"lng": 4.889217007892203, "lat": 52.37206542660903, "label": "display"}], [{"lng": 4.889217007892203, "lat": 52.37206542660903, "label": "display"}]]}, "email": {"fromMe": 103, "toMe": 367}}}}
+{"2019": {"42": {"location": {"Amsterdam, Netherlands": [[{"label": "display", "lng": 4.889217007892203, "lat": 52.37206542660903}], [{"label": "display", "lng": 4.889217007892203, "lat": 52.37206542660903}]]}, "commits": 13, "meetings": {"people": 36, "meetings": 26}, "email": {"toMe": 367, "fromMe": 103}}}}
