@@ -142,6 +142,14 @@ html_file = html_file.replace('[ALLMEETINGS]', str(average(ALLMEETINGS)))
 html_file = html_file.replace('[ALLPEOPLE]', str(average(ALLPEOPLE)))
 html_file = html_file.replace('[ALLCOMMITS]', str(average(ALLCOMMITS)))
 
+##
+# Get foursquare data
+##
+with open(os.path.join(directory, 'foursquare_full.json')) as json_file:
+    data = json.load(json_file)
+    html_file = html_file.replace(
+        '[FOURSQUARE]', 'var full_map = ' + str(json.dumps(data)))
+
 file = open('index.html', 'w')
 file.write(html_file)
 file.close()
