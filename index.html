@@ -1217,7 +1217,6 @@ var MAINSTYLE = [{ "featureType": "water", "stylers": [{ "color": "#19a0d8" }] }
 
 function setFullMap(){
 
-    var currentPoints = window['full-map']
     var map;
 
     map = new google.maps.Map(document.getElementById('full-map'), {
@@ -1271,7 +1270,7 @@ function setMap(id){
 
 function initMap() {
     
-    setFullMap();
+    //setFullMap();
 
     var maps = document.getElementsByClassName("maps");
     for(var i = 0; i < maps.length; i++){
