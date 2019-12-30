@@ -186,12 +186,12 @@ function setFullMap() {
 
     map = new google.maps.Map(document.getElementById('full-map'), {
         center: { lat: 52.3667, lng: 4.8945 },
-        zoom: 1,
+        zoom: 2,
         disableDefaultUI: true,
         styles: MAINSTYLE
     });
 
-    var bounds = new google.maps.LatLngBounds();
+    // var bounds = new google.maps.LatLngBounds();
 
     for (var key in full_map) {
         var obj = full_map[key];
@@ -203,10 +203,10 @@ function setFullMap() {
             position: loc,
             map: map,
         });
-        bounds.extend(loc);
+        // bounds.extend(loc);
     }
 
-    map.fitBounds(bounds);
+    // map.fitBounds(bounds);
 }
 
 function setMap(id){
