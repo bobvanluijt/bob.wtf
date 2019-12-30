@@ -27,5 +27,5 @@ after_success:
                 --consumer-secret ${TWITTER_CS} \
                 --access-token ${TWITTER_AT}  \
                 --token-secret ${TWITTER_TS} \
-                -d 'status=My digital journal (travels, movies and logs) just got updated! 😄👍 Check it out here: https://www.bob.wtf' /1.1/statuses/update.json
+                -d 'status=My digital journal (travels, movies and logs) just got updated! 😄👍 Check it out here: https://bob.wtf/ (Tweeted by a 🤖)' /1.1/statuses/update.json
         fi
