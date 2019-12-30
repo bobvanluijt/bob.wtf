@@ -5,4 +5,8 @@ exclude:
     - getStats/*
     - html/*
     - loadOldData.sh
-    - renderStats.py]
+    - renderStats.py
+    - CNAME
+    - getStats.zip
+    - getStats.zip.enc
+    - requirements.txt
