@@ -13,7 +13,7 @@ script:
     - python3 ./getStats/getStats.py $(date +%Y) $(date +%W)
     - python3 renderStats.py
 after_success:
-    - curl -X POST -H 'Content-Type: application/json' -d '{"url": "bob.wtf"}' https://pragma.archivelab.org
+    # - curl -X POST -H "Content-Type: application/json" -d '{"url": "bob.wtf"}' https://pragma.archivelab.org
     - |
         CHANGED=$(git status -s | wc -l)
         if [ "$CHANGED" -gt 0 ]; then
