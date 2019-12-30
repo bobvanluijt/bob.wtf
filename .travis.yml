@@ -27,3 +27,4 @@ script:
             --token-secret ${TWITTER_TS} \
             -d 'status=My digital journal (travels, movies and logs) just got updated! 😄👍 Check it out here: https://www.bob.wtf' /1.1/statuses/update.json
     fi
+- curl -X POST -H "Content-Type: application/json" -d '{"url": "bob.wtf"}' https://pragma.archivelab.org
