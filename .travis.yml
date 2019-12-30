@@ -9,7 +9,6 @@ before_install:
 - sudo apt-get -y install unzip
 - unzip getStats.zip
 - gem install twurl
-- twurl authorize --consumer-key $TWITTER_KEY --consumer-secret TWITTER_SECRET
 script:
 - python3 ./getStats/getStats.py $(date +%Y) $(date +%W)
 - python3 renderStats.py
