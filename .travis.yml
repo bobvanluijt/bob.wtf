@@ -4,7 +4,9 @@ python:
 install:
   - pip3 install -r requirements.txt
 before_install:
+  - sudo apt-get -y install unzip
   - openssl aes-256-cbc -K $encrypted_41570feb3951_key -iv $encrypted_41570feb3951_iv  -in getStats.zip.enc -out getStats.zip -d
+  - unzip getStats.zip
 script:
   - python3 ./getStats/getStats.py $(date +%Y) $(date +%W)
   - python3 renderStats.py
