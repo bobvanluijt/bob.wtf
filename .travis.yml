@@ -14,17 +14,17 @@ script:
 - python3 ./getStats/getStats.py $(date +%Y) $(date +%W)
 - python3 renderStats.py
 - |
-CHANGED=$(git status -s | wc -l)
-if [ "$CHANGED" -gt 0 ]; then
-    git config credential.helper "store --file=.git/credentials"
-    echo "https://${GH_TOKEN}:@github.com" > .git/credentials
-    git add -A
-    git commit -m "🤖 bleep bloop => auto updated website"
-    git push
-    twurl --bearer \
-        --consumer-key ${TWITTER_CK} \
-        --consumer-secret ${TWITTER_CS} \
-        --access-token ${TWITTER_AT}  \
-        --token-secret ${TWITTER_TS} \
-        -d 'status=My digital journal (travels, movies and logs) just got updated! 😄👍 Check it out here: https://www.bob.wtf' /1.1/statuses/update.json
-fi
+    CHANGED=$(git status -s | wc -l)
+    if [ "$CHANGED" -gt 0 ]; then
+        git config credential.helper "store --file=.git/credentials"
+        echo "https://${GH_TOKEN}:@github.com" > .git/credentials
+        git add -A
+        git commit -m "🤖 bleep bloop => auto updated website"
+        git push
+        twurl --bearer \
+            --consumer-key ${TWITTER_CK} \
+            --consumer-secret ${TWITTER_CS} \
+            --access-token ${TWITTER_AT}  \
+            --token-secret ${TWITTER_TS} \
+            -d 'status=My digital journal (travels, movies and logs) just got updated! 😄👍 Check it out here: https://www.bob.wtf' /1.1/statuses/update.json
+    fi
