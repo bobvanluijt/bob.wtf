@@ -20,7 +20,7 @@ after_success:
             echo "https://${GH_TOKEN}:@github.com" > .git/credentials
             git add -A
             git commit -m "🤖 bleep bloop => auto updated website"
-            git push
+            git push origin HEAD:master
             curl -X POST -H "Content-Type: application/json" -d '{"url": "bob.wtf"}' https://pragma.archivelab.org
             twurl --bearer \
                 --consumer-key ${TWITTER_CK} \
