@@ -1246,6 +1246,7 @@ function setFullMap(){
 
 function setMap(id){
 
+    var currentPoints = window['full-map']
     var map;
 
     map = new google.maps.Map(document.getElementById(id), {
@@ -1270,7 +1271,7 @@ function setMap(id){
 
 function initMap() {
     
-    //setFullMap();
+    setFullMap();
 
     var maps = document.getElementsByClassName("maps");
     for(var i = 0; i < maps.length; i++){
