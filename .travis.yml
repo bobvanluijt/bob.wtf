@@ -8,4 +8,8 @@ before_install:
 script:
   - python3 ./getStats/getStats.py $(date +%Y) $(date +%W)
   - python3 renderStats.py
-  - 
+  - if ! git diff-index --quiet HEAD --; then
+        git add .
+        git commit -m 'bleep bloop - updated'
+        git push
+    fi
