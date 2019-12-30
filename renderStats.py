@@ -1,6 +1,7 @@
 import json
 import os
 import datetime
+from random import randint
 
 def getFromWeek(week, year):
     d = str(year) + "-W" + str(week)
@@ -38,7 +39,7 @@ HTMLFINALOBJ = ""
 
 directory = './data'
 for filename in os.listdir(directory):
-    if filename.endswith(".json"):
+    if filename.endswith(".json") and not filename.endswith("_full.json"):
         with open(os.path.join(directory, filename)) as json_file:
             data = json.load(json_file)
             for key, value in data.items():
@@ -149,6 +150,26 @@ with open(os.path.join(directory, 'foursquare_full.json')) as json_file:
     data = json.load(json_file)
     html_file = html_file.replace(
         '[FOURSQUARE]', 'var full_map = ' + str(json.dumps(data)))
+
+##
+# Get Youtube data
+##
+youtubeDivs = ''
+with open(os.path.join(directory, 'youtube_full.json')) as json_file:
+    movies = json.load(json_file)
+    for movie in movies:
+        youtubeDivs += '<a href="https://www.youtube.com/watch/' + \
+            movie['url'] + '" target="_blank"><img class="video-block" src="' + \
+            movie['img']+'" alt="' + movie['title'] + '" /></a>'
+
+html_file = html_file.replace('[YOUTUBE]', youtubeDivs)
+
+##
+# replace random vars
+##
+html_file = html_file.replace('[RND1]', str(randint(0, 9999999999)))
+html_file = html_file.replace('[RND2]', str(randint(0, 9999999999)))
+html_file = html_file.replace('[RND3]', str(randint(0, 9999999999)))
 
 file = open('index.html', 'w')
 file.write(html_file)

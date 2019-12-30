@@ -14,9 +14,9 @@
 <meta name="twitter:title" content="Bob van Luijt">
 <meta name="twitter:description" content="Bob van Luijt's webite and digital logbook">
 <meta name="twitter:creator" content="@bobvanluijt">
-<meta name="twitter:image" content="https://bob.wtf/bobvanluijt.jpg">
-<meta property="og:image" content="https://bob.wtf/bobvanluijt.jpg">
-<meta itemprop="image" content="https://bob.wtf/bobvanluijt.jpg">
+<meta name="twitter:image" content="https://bob.wtf/og.jpg?version=[RND1]">
+<meta property="og:image" content="https://bob.wtf/og.jpg?version=[RND2]">
+<meta itemprop="image" content="https://bob.wtf/og.jpg?version=[RND3]">
 <style>
 body {
     font-family: 'Itim', sans-serif !important;
@@ -29,6 +29,16 @@ body {
     width: 100%;
     height: 360px;
 }
+.video-block {
+    width: 98px;
+    height: 78px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;     
+    float:left;
+    padding:0.05rem; 
+    margin:0 0.25rem 0.25rem 0.25rem; 
+}
 </style>
 </head>
 
@@ -36,7 +46,7 @@ body {
     <!-- Begin page content -->
 <main role="main" class="flex-shrink-0">
     <div class="container">
-        <h1 class="mt-5">Bob van Luijt</h1>
+        <h1 class="mt-5">Bob van Luijt's Digital Journal</h1>
         <p class="lead">Hi there 👋 thanks for visiting my corner on the web.</p>
         <div>
             <ul class="list mb-2">
@@ -123,9 +133,12 @@ body {
             <p>
                 Below you can find my logbook of travels, Github commits, emails, music listened, and more. I'll try to add more data over time to make this something like an open-source diary.
             </p>
+            <p style="font-size:1.42rem; text-align: center;">
+                <a href="#travels">All Time Travels</a> - <a href="#stats">All Time Statistics</a> <br> <a href="#videos">Videos I Like</a> - <a href="#weekly">Weekly Schedule</a>
+            </p>
         </div>
 
-        <div class="card-deck mb-2">
+        <div class="card-deck mb-2" id="travels">
             <div class="card xl-2">
                 <div class="card-header">
                     <h4 class="my-0 font-weight-normal">All Time Travels</h4>
@@ -137,7 +150,7 @@ body {
             </div>
         </div>
 
-        <div class="card-deck mb-2">
+        <div class="card-deck mb-2" id="stats">
             <div class="card xl-2">
                 <div class="card-header">
                     <h4 class="my-0 font-weight-normal">All Time Stats</h4>
@@ -147,6 +160,19 @@ body {
                 </div>
             </div>
         </div>
+
+        <div class="card-deck mb-2" id="videos">
+            <div class="card xl-2">
+                <div class="card-header">
+                    <h4 class="my-0 font-weight-normal">Videos I liked</h4>
+                </div>
+                <div class="card-body">
+                    [YOUTUBE]
+                </div>
+            </div>
+        </div>
+
+        <a name="weekly"></a>
 
         [VISITCONTENT]
     </div>
