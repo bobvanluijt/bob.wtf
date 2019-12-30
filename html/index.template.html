@@ -190,22 +190,22 @@ function setFullMap() {
         styles: MAINSTYLE
     });
 
-    // var bounds = new google.maps.LatLngBounds();
+    var bounds = new google.maps.LatLngBounds();
 
-    // for (var key in full_map) {
-    //     var obj = full_map[key];
-    //     var loc = {
-    //         lat: obj['lat'],
-    //         lng: obj['lng']
-    //     }
-    //     new google.maps.Marker({
-    //         position: loc,
-    //         map: map,
-    //     });
-    //     bounds.extend(loc);
-    // }
+    for (var key in full_map) {
+        var obj = full_map[key];
+        var loc = {
+            lat: obj['lat'],
+            lng: obj['lng']
+        }
+        new google.maps.Marker({
+            position: loc,
+            map: map,
+        });
+        bounds.extend(loc);
+    }
 
-    // map.fitBounds(bounds);
+    map.fitBounds(bounds);
 }
 
 function setMap(id){
