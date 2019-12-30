@@ -25,6 +25,10 @@ body {
     width: 100%;
     height: 200px;
 }
+#full-map {
+    width: 100%;
+    height: 240px;
+}
 </style>
 </head>
 
@@ -117,8 +121,19 @@ body {
         <div>
             <h2>Logbook</h2>
             <p>
-                    Below you can find my logbook of travels, Github commits, emails, music listened, and more. I'll try to add more data over time to make this something like an open-source diary.
+                Below you can find my logbook of travels, Github commits, emails, music listened, and more. I'll try to add more data over time to make this something like an open-source diary.
             </p>
+        </div>
+
+        <div class="card-deck mb-2">
+            <div class="card xl-2">
+                <div class="card-header">
+                    <h4 class="my-0 font-weight-normal">All Time Travels</h4>
+                </div>
+                <div class="card-body">
+                    <div id="full-map"></div>
+                </div>
+            </div>
         </div>
 
         <div class="card-deck mb-2">
@@ -1201,6 +1216,38 @@ var myChart = new Chart(ctx, {
 });
 </script>
 <script>
+
+var MAINSTYLE = [{ "featureType": "water", "stylers": [{ "color": "#19a0d8" }] }, { "featureType": "administrative", "elementType": "labels.text.stroke", "stylers": [{ "color": "#ffffff" }, { "weight": 6 }] }, { "featureType": "administrative", "elementType": "labels.text.fill", "stylers": [{ "color": "#e85113" }] }, { "featureType": "road.highway", "elementType": "geometry.stroke", "stylers": [{ "color": "#efe9e4" }, { "lightness": -40 }] }, { "featureType": "road.arterial", "elementType": "geometry.stroke", "stylers": [{ "color": "#efe9e4" }, { "lightness": -20 }] }, { "featureType": "road", "elementType": "labels.text.stroke", "stylers": [{ "lightness": 100 }] }, { "featureType": "road", "elementType": "labels.text.fill", "stylers": [{ "lightness": -100 }] }, { "featureType": "road.highway", "elementType": "labels.icon" }, { "featureType": "landscape", "elementType": "labels", "stylers": [{ "visibility": "off" }] }, { "featureType": "landscape", "stylers": [{ "lightness": 20 }, { "color": "#efe9e4" }] }, { "featureType": "landscape.man_made", "stylers": [{ "visibility": "off" }] }, { "featureType": "water", "elementType": "labels.text.stroke", "stylers": [{ "lightness": 100 }] }, { "featureType": "water", "elementType": "labels.text.fill", "stylers": [{ "lightness": -100 }] }, { "featureType": "poi", "elementType": "labels.text.fill", "stylers": [{ "hue": "#11ff00" }] }, { "featureType": "poi", "elementType": "labels.text.stroke", "stylers": [{ "lightness": 100 }] }, { "featureType": "poi", "elementType": "labels.icon", "stylers": [{ "hue": "#4cff00" }, { "saturation": 58 }] }, { "featureType": "poi", "elementType": "geometry", "stylers": [{ "visibility": "on" }, { "color": "#f0e4d3" }] }, { "featureType": "road.highway", "elementType": "geometry.fill", "stylers": [{ "color": "#efe9e4" }, { "lightness": -25 }] }, { "featureType": "road.arterial", "elementType": "geometry.fill", "stylers": [{ "color": "#efe9e4" }, { "lightness": -10 }] }, { "featureType": "poi", "elementType": "labels", "stylers": [{ "visibility": "simplified" }] }]
+
+function setFullMap() {
+
+    var map;
+
+    map = new google.maps.Map(document.getElementById('full-map'), {
+        center: { lat: 52.3667, lng: 4.8945 },
+        zoom: 1,
+        disableDefaultUI: true,
+        styles: MAINSTYLE
+    });
+
+    // var bounds = new google.maps.LatLngBounds();
+
+    // for (var key in full_map) {
+    //     var obj = full_map[key];
+    //     var loc = {
+    //         lat: obj['lat'],
+    //         lng: obj['lng']
+    //     }
+    //     new google.maps.Marker({
+    //         position: loc,
+    //         map: map,
+    //     });
+    //     bounds.extend(loc);
+    // }
+
+    // map.fitBounds(bounds);
+}
+
 function setMap(id){
 
     var currentPoints = window[id.replace(/-/g, "_")]
@@ -1210,7 +1257,7 @@ function setMap(id){
         center: {lat: 52.3667, lng: 4.8945},
         zoom: 1,
         disableDefaultUI: true,
-        styles: [ { "featureType": "water", "stylers": [ { "color": "#19a0d8" } ] }, { "featureType": "administrative", "elementType": "labels.text.stroke", "stylers": [ { "color": "#ffffff" }, { "weight": 6 } ] }, { "featureType": "administrative", "elementType": "labels.text.fill", "stylers": [ { "color": "#e85113" } ] }, { "featureType": "road.highway", "elementType": "geometry.stroke", "stylers": [ { "color": "#efe9e4" }, { "lightness": -40 } ] }, { "featureType": "road.arterial", "elementType": "geometry.stroke", "stylers": [ { "color": "#efe9e4" }, { "lightness": -20 } ] }, { "featureType": "road", "elementType": "labels.text.stroke", "stylers": [ { "lightness": 100 } ] }, { "featureType": "road", "elementType": "labels.text.fill", "stylers": [ { "lightness": -100 } ] }, { "featureType": "road.highway", "elementType": "labels.icon" }, { "featureType": "landscape", "elementType": "labels", "stylers": [ { "visibility": "off" } ] }, { "featureType": "landscape", "stylers": [ { "lightness": 20 }, { "color": "#efe9e4" } ] }, { "featureType": "landscape.man_made", "stylers": [ { "visibility": "off" } ] }, { "featureType": "water", "elementType": "labels.text.stroke", "stylers": [ { "lightness": 100 } ] }, { "featureType": "water", "elementType": "labels.text.fill", "stylers": [ { "lightness": -100 } ] }, { "featureType": "poi", "elementType": "labels.text.fill", "stylers": [ { "hue": "#11ff00" } ] }, { "featureType": "poi", "elementType": "labels.text.stroke", "stylers": [ { "lightness": 100 } ] }, { "featureType": "poi", "elementType": "labels.icon", "stylers": [ { "hue": "#4cff00" }, { "saturation": 58 } ] }, { "featureType": "poi", "elementType": "geometry", "stylers": [ { "visibility": "on" }, { "color": "#f0e4d3" } ] }, { "featureType": "road.highway", "elementType": "geometry.fill", "stylers": [ { "color": "#efe9e4" }, { "lightness": -25 } ] }, { "featureType": "road.arterial", "elementType": "geometry.fill", "stylers": [ { "color": "#efe9e4" }, { "lightness": -10 } ] }, { "featureType": "poi", "elementType": "labels", "stylers": [ { "visibility": "simplified" } ] } ]
+        styles: MAINSTYLE
     });
 
     var bounds = new google.maps.LatLngBounds();
