@@ -164,13 +164,6 @@ with open(os.path.join(directory, 'youtube_full.json')) as json_file:
 
 html_file = html_file.replace('[YOUTUBE]', youtubeDivs)
 
-##
-# replace random vars
-##
-html_file = html_file.replace('[RND1]', str(randint(0, 9999999999)))
-html_file = html_file.replace('[RND2]', str(randint(0, 9999999999)))
-html_file = html_file.replace('[RND3]', str(randint(0, 9999999999)))
-
 file = open('index.html', 'w')
 file.write(html_file)
 file.close()
