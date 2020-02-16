@@ -22,10 +22,10 @@ after_success:
             git commit -m "🤖 bleep bloop => auto updated website"
             git push origin HEAD:master
             curl -X POST -H "Content-Type: application/json" -d '{"url": "bob.wtf"}' https://pragma.archivelab.org
-            twurl --bearer \
-                --consumer-key ${TWITTER_CK} \
-                --consumer-secret ${TWITTER_CS} \
-                --access-token ${TWITTER_AT}  \
-                --token-secret ${TWITTER_TS} \
-                -d "status=My digital journal (travels, movies and logs) just got updated! 😄👍 Check it out here: https://bob.wtf/ (Tweeted by a 🤖)" /1.1/statuses/update.json
+            # twurl --bearer \
+            #     --consumer-key ${TWITTER_CK} \
+            #     --consumer-secret ${TWITTER_CS} \
+            #     --access-token ${TWITTER_AT}  \
+            #     --token-secret ${TWITTER_TS} \
+            #     -d "status=My digital journal (travels, movies and logs) just got updated! 😄👍 Check it out here: https://bob.wtf/ (Tweeted by a 🤖)" /1.1/statuses/update.json
         fi
